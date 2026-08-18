@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Prestamax.Application.Organizations;
+using Prestamax.Infrastructure.Organizations.BusinessDates;
 
 namespace Prestamax.Infrastructure.Organizations;
 
@@ -14,6 +15,8 @@ public static class DependencyInjection
         services.AddScoped<
             IOrganizationRepository,
             OrganizationRepository>();
+
+        services.AddBusinessDates();
 
         return services;
     }
