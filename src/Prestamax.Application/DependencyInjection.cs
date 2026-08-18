@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Prestamax.Application.Catalogs;
+using Prestamax.Application.Organizations;
 
 namespace Prestamax.Application;
 
@@ -12,6 +13,8 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddCatalogs();
+
+        services.AddOrganizations();
 
         return services;
     }
