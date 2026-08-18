@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Prestamax.Application.Catalogs.DocumentTypes;
 using Prestamax.Infrastructure.Catalogs.DocumentTypes;
+using Prestamax.Infrastructure.Catalogs.UserStatuses;
 
 namespace Prestamax.Infrastructure.Catalogs;
 
@@ -12,9 +12,9 @@ public static class DependencyInjection
     public static IServiceCollection AddCatalogs(
         this IServiceCollection services)
     {
-        services.AddScoped<
-            IDocumentTypeRepository,
-            DocumentTypeRepository>();
+        services.AddDocumentTypes();
+
+        services.AddUserStatuses();
 
         return services;
     }
