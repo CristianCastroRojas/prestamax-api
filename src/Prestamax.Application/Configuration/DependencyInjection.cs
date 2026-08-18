@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Prestamax.Application.Configuration.Modules;
 using Prestamax.Application.Configuration.SystemVersions;
 
 namespace Prestamax.Application.Configuration;
@@ -12,6 +13,8 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddSystemVersions();
+
+        services.AddModules();
 
         return services;
     }
