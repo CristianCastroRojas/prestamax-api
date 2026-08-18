@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Prestamax.Application\Prestamax.Application.csproj" />
+    <ProjectReference Include="..\Prestamax.Infrastructure\Prestamax.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
