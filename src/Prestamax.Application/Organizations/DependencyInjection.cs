@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Prestamax.Application.Organizations.GetBusinessDate;
 using Prestamax.Application.Organizations.GetOrganizations;
 
 namespace Prestamax.Application.Organizations;
@@ -12,6 +13,8 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddScoped<GetOrganizationsHandler>();
+
+        services.AddScoped<GetBusinessDateHandler>();
 
         return services;
     }
