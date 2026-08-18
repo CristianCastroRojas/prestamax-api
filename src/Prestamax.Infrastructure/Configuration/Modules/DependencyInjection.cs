@@ -15,6 +15,10 @@ public static class DependencyInjection
             IModuleRepository,
             ModuleRepository>();
 
+        services.AddScoped<
+            IModuleActionRepository,
+            ModuleActionRepository>();
+
         return services;
     }
 }
