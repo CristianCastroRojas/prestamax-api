@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Prestamax.Application.Catalogs.DocumentTypes.GetDocumentTypes;
+using Prestamax.Application.Catalogs.DocumentTypes;
+using Prestamax.Application.Catalogs.UserStatuses;
 
 namespace Prestamax.Application.Catalogs;
 
@@ -11,7 +12,9 @@ public static class DependencyInjection
     public static IServiceCollection AddCatalogs(
         this IServiceCollection services)
     {
-        services.AddScoped<GetDocumentTypesHandler>();
+        services.AddDocumentTypes();
+
+        services.AddUserStatuses();
 
         return services;
     }
