@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Prestamax.Infrastructure.Catalogs;
+using Prestamax.Infrastructure.Organizations;
 using Prestamax.Infrastructure.Persistence;
 
 namespace Prestamax.Infrastructure;
@@ -17,6 +18,8 @@ public static class DependencyInjection
         services.AddDatabase(configuration);
 
         services.AddCatalogs();
+
+        services.AddOrganizations();
 
         return services;
     }
