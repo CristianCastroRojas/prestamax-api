@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Prestamax.Infrastructure.Organizations.BusinessDates;
+using Prestamax.Infrastructure.Tenant.Modules;
 using Prestamax.Infrastructure.Tenant.Organizations;
 
 
@@ -14,6 +15,9 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddBusinessDates();
+
+        services.AddModules();
+
         services.AddOrganizations();
 
         return services;

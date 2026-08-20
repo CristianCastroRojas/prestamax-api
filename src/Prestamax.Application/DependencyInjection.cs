@@ -19,7 +19,6 @@ public static class DependencyInjection
 
         services.AddTenantApplication();
 
-
         return services;
     }
 }

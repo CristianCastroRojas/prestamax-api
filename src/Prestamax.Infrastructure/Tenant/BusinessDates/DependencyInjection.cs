@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Prestamax.Application.Tenant.BusinessDates;
+using Prestamax.Infrastructure.Tenant.BusinessDates;
 
 namespace Prestamax.Infrastructure.Organizations.BusinessDates;
 
