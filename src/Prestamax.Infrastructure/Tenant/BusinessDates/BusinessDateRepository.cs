@@ -3,7 +3,7 @@ using Prestamax.Application.Tenant.BusinessDates;
 using Prestamax.Domain.Organizations.BusinessDates;
 using Prestamax.Infrastructure.Persistence;
 
-namespace Prestamax.Infrastructure.Organizations.BusinessDates;
+namespace Prestamax.Infrastructure.Tenant.BusinessDates;
 
 /// <summary>
 /// Proporciona acceso a las fechas de negocio.
