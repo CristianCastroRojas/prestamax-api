@@ -4,6 +4,6 @@
 /// Representa la respuesta de un estado de usuario seleccionable manualmente.
 /// </summary>
 public sealed record GetManualUserStatusesResponse(
-    long IdUserStatus,
+    int IdUserStatus,
     string Code,
     string Name);

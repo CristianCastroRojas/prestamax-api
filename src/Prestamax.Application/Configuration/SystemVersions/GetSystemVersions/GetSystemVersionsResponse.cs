@@ -4,6 +4,8 @@
 /// Representa la respuesta con la información de una versión del sistema.
 /// </summary>
 public sealed record GetSystemVersionsResponse(
-    long IdSystemVersion,
+    int IdSystemVersion,
     string Version,
-    DateTimeOffset UpdatedAt);
+    DateTimeOffset UpdatedAt,
+    bool IsCurrent,
+    DateTimeOffset ReleasedAt);

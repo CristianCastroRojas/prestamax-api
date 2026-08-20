@@ -16,6 +16,7 @@ public sealed class GetDocumentTypesHandler(
                 documentType.IdDocumentType,
                 documentType.Code,
                 documentType.Name,
-                documentType.Regex))];
+                documentType.Regex,
+                documentType.HasVerificationDigit))];
     }
 }

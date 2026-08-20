@@ -35,6 +35,11 @@ public sealed class DocumentTypeConfiguration
             .HasMaxLength(50)
             .IsRequired();
 
+        builder.Property(x => x.HasVerificationDigit)
+            .HasColumnName("HAS_VERIFICATION_DIGIT")
+            .IsRequired()
+            .HasDefaultValue(false);
+
         builder.HasIndex(x => x.Code)
             .IsUnique()
             .HasDatabaseName("UQ_CAT_DOCUMENT_TYPE_CODE");

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Prestamax.Domain.Configuration;
+using Prestamax.Domain.Configuration.Settings;
 
 namespace Prestamax.Infrastructure.Configuration.Settings;
 

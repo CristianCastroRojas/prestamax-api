@@ -9,7 +9,7 @@ namespace Prestamax.Application.Catalogs;
 /// </summary>
 public static class DependencyInjection
 {
-    public static IServiceCollection AddCatalogs(
+    public static IServiceCollection AddCatalogsApplication(
         this IServiceCollection services)
     {
         services.AddDocumentTypes();

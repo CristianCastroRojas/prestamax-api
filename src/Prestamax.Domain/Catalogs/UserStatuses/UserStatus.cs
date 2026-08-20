@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class UserStatus
 {
-    public long IdUserStatus { get; private set; }
+    public int IdUserStatus { get; private set; }
 
     public string Code { get; private set; } = string.Empty;
 
