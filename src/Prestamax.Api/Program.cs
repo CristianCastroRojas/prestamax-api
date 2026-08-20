@@ -1,3 +1,4 @@
+using Prestamax.Api.Common.Middleware;
 using Prestamax.Application;
 using Prestamax.Infrastructure;
 using Prestamax.Infrastructure.Persistence;
@@ -25,6 +26,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<RequestLoggingMiddleware>();
 
 app.UseAuthorization();
 
