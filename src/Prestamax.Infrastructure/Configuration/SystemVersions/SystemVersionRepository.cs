@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Prestamax.Application.Configuration.SystemVersions;
-using Prestamax.Domain.Configuration;
+using Prestamax.Domain.Configuration.SystemVersions;
 using Prestamax.Infrastructure.Persistence;
 
 namespace Prestamax.Infrastructure.Configuration.SystemVersions;

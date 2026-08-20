@@ -16,6 +16,8 @@ public sealed class GetSystemVersionsHandler(
             .Select(systemVersion => new GetSystemVersionsResponse(
                 systemVersion.IdSystemVersion,
                 systemVersion.Version,
-                systemVersion.UpdatedAt))];
+                systemVersion.UpdatedAt,
+                systemVersion.IsCurrent,
+                systemVersion.ReleasedAt))];
     }
 }

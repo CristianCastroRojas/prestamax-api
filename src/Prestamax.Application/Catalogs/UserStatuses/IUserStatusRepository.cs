@@ -8,12 +8,6 @@ namespace Prestamax.Application.Catalogs.UserStatuses;
 public interface IUserStatusRepository
 {
     /// <summary>
-    /// Obtiene todos los estados de usuario.
-    /// </summary>
-    Task<IReadOnlyList<UserStatus>> GetAllAsync(
-        CancellationToken cancellationToken);
-
-    /// <summary>
     /// Obtiene los estados de usuario permitidos para selección manual.
     /// </summary>
     Task<IReadOnlyList<UserStatus>> GetManualSelectionAsync(

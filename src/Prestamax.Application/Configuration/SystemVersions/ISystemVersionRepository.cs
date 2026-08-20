@@ -1,4 +1,4 @@
-﻿using Prestamax.Domain.Configuration;
+﻿using Prestamax.Domain.Configuration.SystemVersions;
 
 namespace Prestamax.Application.Configuration.SystemVersions;
 
