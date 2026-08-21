@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Prestamax.Application.Tenant.Organizations;
+using Prestamax.Application.Tenant.Organizations.Common;
 using Prestamax.Domain.Tenant.Organizations;
 using Prestamax.Infrastructure.Persistence;
 
@@ -11,13 +11,15 @@ namespace Prestamax.Infrastructure.Tenant.Organizations;
 public sealed class OrganizationRepository(
     AppDbContext context) : IOrganizationRepository
 {
-    public async Task<IReadOnlyList<Organization>> GetAllAsync(
+    public async Task<Organization?> GetByIdAsync(
+        int idOrganization,
         CancellationToken cancellationToken)
     {
         return await context
             .Set<Organization>()
             .AsNoTracking()
-            .OrderBy(x => x.IdOrganization)
-            .ToListAsync(cancellationToken);
+            .FirstOrDefaultAsync(
+                x => x.IdOrganization == idOrganization,
+                cancellationToken);
     }
 }

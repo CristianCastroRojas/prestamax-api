@@ -1,9 +1,9 @@
-﻿namespace Prestamax.Application.Tenant.Organizations.GetOrganizations;
+﻿namespace Prestamax.Application.Tenant.Organizations.GetOrganizationById;
 
 /// <summary>
 /// Representa la respuesta con la información de una organización.
 /// </summary>
-public sealed record GetOrganizationsResponse(
+public sealed record GetOrganizationByIdResponse(
     int IdOrganization,
     string LegalName,
     string? CommercialName,
