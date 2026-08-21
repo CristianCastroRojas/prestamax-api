@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Prestamax.Application.Tenant.Organizations;
+using Prestamax.Application.Tenant.Organizations.Common;
 
 namespace Prestamax.Infrastructure.Tenant.Organizations;
 

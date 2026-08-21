@@ -1,6 +1,6 @@
 ﻿using Prestamax.Domain.Tenant.Organizations;
 
-namespace Prestamax.Application.Tenant.Organizations;
+namespace Prestamax.Application.Tenant.Organizations.Common;
 
 /// <summary>
 /// Define el contrato para el acceso a las organizaciones.
@@ -8,8 +8,9 @@ namespace Prestamax.Application.Tenant.Organizations;
 public interface IOrganizationRepository
 {
     /// <summary>
-    /// Obtiene todas las organizaciones.
+    /// Obtiene una organización por su identificador.
     /// </summary>
-    Task<IReadOnlyList<Organization>> GetAllAsync(
+    Task<Organization?> GetByIdAsync(
+        int idOrganization,
         CancellationToken cancellationToken);
 }

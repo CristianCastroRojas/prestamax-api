@@ -16,7 +16,6 @@ public sealed class RequestLoggingMiddleware(
     {
         var stopwatch = Stopwatch.StartNew();
         var traceId = context.TraceIdentifier;
-        var statusCode = StatusCodes.Status500InternalServerError;
 
         logger.LogInformation(
             "Request started. TraceId: {TraceId}, Method: {Method}, Path: {Path}",
@@ -27,14 +26,6 @@ public sealed class RequestLoggingMiddleware(
         try
         {
             await next(context);
-
-            statusCode = context.Response.StatusCode;
-        }
-        catch
-        {
-            statusCode = StatusCodes.Status500InternalServerError;
-
-            throw;
         }
         finally
         {
@@ -45,7 +36,7 @@ public sealed class RequestLoggingMiddleware(
                 traceId,
                 context.Request.Method,
                 context.Request.Path,
-                statusCode,
+                context.Response.StatusCode,
                 stopwatch.ElapsedMilliseconds);
         }
     }
