@@ -8,8 +8,8 @@ namespace Prestamax.Application.Configuration.SystemVersions;
 public interface ISystemVersionRepository
 {
     /// <summary>
-    /// Obtiene todas las versiones del sistema.
+    /// Obtiene la versión vigente del sistema.
     /// </summary>
-    Task<IReadOnlyList<SystemVersion>> GetAllAsync(
+    Task<SystemVersion?> GetCurrentAsync(
         CancellationToken cancellationToken);
 }

@@ -7,7 +7,7 @@ public sealed class SystemVersion
 {
     public int IdSystemVersion { get; private set; }
 
-    public string Version { get; private set; } = string.Empty;
+    public string? Version { get; private set; }
 
     public DateTimeOffset UpdatedAt { get; private set; }
 

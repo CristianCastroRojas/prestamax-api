@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Prestamax.Application.Configuration.SystemVersions.GetSystemVersions;
+using Prestamax.Application.Configuration.SystemVersions.GetCurrentSystemVersion;
 
 namespace Prestamax.Api.Controllers.Configuration.SystemVersions;
 
 [ApiController]
-[Route("api/configuration/system-versions")]
+[Route("api/configuration/system-version")]
 public sealed class SystemVersionsController(
-    GetSystemVersionsHandler handler) : ControllerBase
+    GetCurrentSystemVersionHandler handler) : ControllerBase
 {
     /// <summary>
-    /// Obtiene todas las versiones del sistema.
+    /// Obtiene la versión vigente del sistema.
     /// </summary>
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<GetSystemVersionsResponse>>> GetAll(
+    public async Task<ActionResult<GetCurrentSystemVersionResponse>> GetCurrent(
         CancellationToken cancellationToken)
     {
         var response = await handler.HandleAsync(cancellationToken);
