@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Prestamax.Application.Tenant.Organizations.Common;
+using Prestamax.Application.Tenant.Organizations;
 using Prestamax.Domain.Tenant.Organizations;
 using Prestamax.Infrastructure.Persistence;
 

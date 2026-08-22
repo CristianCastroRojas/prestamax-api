@@ -1,5 +1,4 @@
 ﻿using Prestamax.Application.Common.Exceptions;
-using Prestamax.Application.Tenant.Organizations.Common;
 using Prestamax.Application.Tenant.Organizations.Errors;
 
 namespace Prestamax.Application.Tenant.Organizations.GetOrganizationById;
