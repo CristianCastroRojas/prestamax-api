@@ -12,7 +12,7 @@ public sealed class BusinessDateRepository(
     AppDbContext context) : IBusinessDateRepository
 {
     public async Task<BusinessDate?> GetByOrganizationIdAsync(
-        long organizationId,
+        int organizationId,
         CancellationToken cancellationToken)
     {
         return await context
