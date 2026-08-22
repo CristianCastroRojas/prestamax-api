@@ -6,18 +6,19 @@ using Prestamax.Infrastructure.Persistence;
 namespace Prestamax.Infrastructure.Configuration.SystemVersions;
 
 /// <summary>
-/// Proporciona acceso a las versiones del sistema.
+/// Proporciona acceso a la versión vigente del sistema.
 /// </summary>
 public sealed class SystemVersionRepository(
     AppDbContext context) : ISystemVersionRepository
 {
-    public async Task<IReadOnlyList<SystemVersion>> GetAllAsync(
+    public async Task<SystemVersion?> GetCurrentAsync(
         CancellationToken cancellationToken)
     {
         return await context
             .Set<SystemVersion>()
             .AsNoTracking()
-            .OrderByDescending(x => x.UpdatedAt)
-            .ToListAsync(cancellationToken);
+            .FirstOrDefaultAsync(
+                x => x.IsCurrent && x.Version !=null,
+                cancellationToken);
     }
 }
