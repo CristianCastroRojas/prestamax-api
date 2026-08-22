@@ -11,6 +11,6 @@ public interface IBusinessDateRepository
     /// Obtiene la fecha de negocio de una organización.
     /// </summary>
     Task<BusinessDate?> GetByOrganizationIdAsync(
-        long organizationId,
+        int organizationId,
         CancellationToken cancellationToken);
 }
