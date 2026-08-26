@@ -9,7 +9,7 @@ public interface ISettingRepository
     /// Obtiene el valor de una configuración para una organización.
     /// </summary>
     Task<string?> GetValueAsync(
-        long organizationId,
+        int organizationId,
         string settingKey,
         CancellationToken cancellationToken);
 }

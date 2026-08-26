@@ -12,7 +12,7 @@ public sealed class SettingRepository(
     AppDbContext context) : ISettingRepository
 {
     public async Task<string?> GetValueAsync(
-        long organizationId,
+        int organizationId,
         string settingKey,
         CancellationToken cancellationToken)
     {
