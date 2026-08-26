@@ -8,15 +8,17 @@ namespace Prestamax.Application.Tenant.Modules;
 public interface IModuleRepository
 {
     /// <summary>
-    /// Obtiene los módulos disponibles.
+    /// Obtiene los módulos activos de una organización.
     /// </summary>
     Task<IReadOnlyList<Module>> GetAllAsync(
+        int organizationId,
         CancellationToken cancellationToken);
 
     /// <summary>
-    /// Obtiene un módulo mediante su identificador.
+    /// Obtiene un módulo de una organización mediante su identificador.
     /// </summary>
     Task<Module?> GetByIdAsync(
+        int organizationId,
         int moduleId,
         CancellationToken cancellationToken);
 }
