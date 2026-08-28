@@ -43,34 +43,40 @@ public sealed class ExceptionHandlingMiddleware(
         Exception exception,
         string traceId)
     {
-        if (exception is NotFoundException notFoundException)
+        var (statusCode, errorResponse) = exception switch
         {
-            context.Response.StatusCode =
-                StatusCodes.Status404NotFound;
+            NotFoundException notFoundException =>
+                (
+                    StatusCodes.Status404NotFound,
+                    new ErrorResponse(
+                        notFoundException.Code,
+                        notFoundException.Message,
+                        traceId)
+                ),
 
-            context.Response.ContentType = "application/json";
+            ConfigurationException configurationException =>
+                (
+                    StatusCodes.Status500InternalServerError,
+                    new ErrorResponse(
+                        configurationException.Code,
+                        configurationException.Message,
+                        traceId)
+                ),
 
-            var response = new ErrorResponse(
-                notFoundException.Code,
-                notFoundException.Message,
-                traceId);
+            _ =>
+                (
+                    StatusCodes.Status500InternalServerError,
+                    new ErrorResponse(
+                        "INTERNAL_ERROR",
+                        "Ocurrió un error interno.",
+                        traceId)
+                )
+        };
 
-            await context.Response.WriteAsJsonAsync(response);
-
-            return;
-        }
-
-        context.Response.StatusCode =
-            StatusCodes.Status500InternalServerError;
-
+        context.Response.StatusCode = statusCode;
         context.Response.ContentType = "application/json";
 
-        var internalErrorResponse = new ErrorResponse(
-            "INTERNAL_ERROR",
-            "Ocurrió un error interno.",
-            traceId);
-
         await context.Response.WriteAsJsonAsync(
-            internalErrorResponse);
+            errorResponse);
     }
 }

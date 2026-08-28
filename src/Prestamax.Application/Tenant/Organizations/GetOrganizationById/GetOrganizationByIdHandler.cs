@@ -1,4 +1,5 @@
 ﻿using Prestamax.Application.Common.Exceptions;
+using Prestamax.Application.Tenant.Organizations;
 using Prestamax.Application.Tenant.Organizations.Errors;
 
 namespace Prestamax.Application.Tenant.Organizations.GetOrganizationById;
@@ -17,13 +18,10 @@ public sealed class GetOrganizationByIdHandler(
             idOrganization,
             cancellationToken);
 
-        if (organization is null)
-        {
-            throw new NotFoundException(
-                OrganizationErrors.NotFound);
-        }
-
-        return new GetOrganizationByIdResponse(
+        return organization is null
+            ? throw new NotFoundException(
+                OrganizationErrors.NotFound)
+            : new GetOrganizationByIdResponse(
             organization.IdOrganization,
             organization.LegalName,
             organization.CommercialName,

@@ -5,7 +5,7 @@
 /// </summary>
 public sealed record GetCurrentSystemVersionResponse(
     int IdSystemVersion,
-    string? Version,
+    string Version,
     DateTimeOffset UpdatedAt,
     bool IsCurrent,
     DateTimeOffset ReleasedAt);

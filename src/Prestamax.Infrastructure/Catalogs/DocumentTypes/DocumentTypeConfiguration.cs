@@ -14,7 +14,8 @@ public sealed class DocumentTypeConfiguration
     {
         builder.ToTable("CAT_DOCUMENT_TYPE");
 
-        builder.HasKey(x => x.IdDocumentType);
+        builder.HasKey(x => x.IdDocumentType)
+            .HasName("PK_CAT_DOCUMENT_TYPE");
 
         builder.Property(x => x.IdDocumentType)
             .HasColumnName("ID_DOCUMENT_TYPE")
@@ -32,13 +33,13 @@ public sealed class DocumentTypeConfiguration
 
         builder.Property(x => x.Regex)
             .HasColumnName("REGEX")
-            .HasMaxLength(50)
+            .HasMaxLength(100)
             .IsRequired();
 
         builder.Property(x => x.HasVerificationDigit)
             .HasColumnName("HAS_VERIFICATION_DIGIT")
-            .IsRequired()
-            .HasDefaultValue(false);
+            .HasDefaultValue(false)
+            .IsRequired();
 
         builder.HasIndex(x => x.Code)
             .IsUnique()

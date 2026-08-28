@@ -1,6 +1,7 @@
 ﻿using Prestamax.Application.Common.Exceptions;
 using Prestamax.Application.Tenant.BusinessDates.Errors;
-using Prestamax.Application.Tenant.Organizations.Common;
+using Prestamax.Application.Tenant.Organizations;
+using Prestamax.Application.Tenant.Organizations.Errors;
 
 namespace Prestamax.Application.Tenant.BusinessDates.GetBusinessDate;
 
@@ -9,15 +10,21 @@ namespace Prestamax.Application.Tenant.BusinessDates.GetBusinessDate;
 /// </summary>
 public sealed class GetBusinessDateHandler(
     IBusinessDateRepository repository,
-    IOrganizationValidator organizationValidator)
+    IOrganizationRepository organizationRepository)
 {
-    public async Task<GetBusinessDateResponse?> HandleAsync(
+    public async Task<GetBusinessDateResponse> HandleAsync(
         int organizationId,
         CancellationToken cancellationToken)
     {
-        await organizationValidator.EnsureExistsAsync(
+        var organizationExists = await organizationRepository.ExistsAsync(
             organizationId,
             cancellationToken);
+
+        if (!organizationExists)
+        {
+            throw new NotFoundException(
+                OrganizationErrors.NotFound);
+        }
 
         var businessDate = await repository.GetByOrganizationIdAsync(
             organizationId,
