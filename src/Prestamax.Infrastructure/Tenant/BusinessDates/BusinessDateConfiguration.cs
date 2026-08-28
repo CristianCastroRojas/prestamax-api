@@ -15,7 +15,8 @@ public sealed class BusinessDateConfiguration
     {
         builder.ToTable("TEN_BUSINESS_DATE");
 
-        builder.HasKey(x => x.IdBusinessDate);
+        builder.HasKey(x => x.IdBusinessDate)
+            .HasName("PK_TEN_BUSINESS_DATE");
 
         builder.Property(x => x.IdBusinessDate)
             .HasColumnName("ID_BUSINESS_DATE")

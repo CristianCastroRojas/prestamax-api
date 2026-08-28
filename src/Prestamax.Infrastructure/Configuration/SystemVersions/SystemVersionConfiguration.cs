@@ -24,7 +24,7 @@ public sealed class SystemVersionConfiguration
         builder.Property(x => x.Version)
             .HasColumnName("VERSION")
             .HasMaxLength(20)
-            .IsRequired(false);
+            .IsRequired();
 
         builder.HasIndex(x => x.Version)
             .IsUnique()

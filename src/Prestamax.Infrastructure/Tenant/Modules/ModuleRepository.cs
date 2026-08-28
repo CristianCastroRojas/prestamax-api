@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Prestamax.Application.Tenant.Modules;
 using Prestamax.Domain.Tenant.Modules;
-using Prestamax.Domain.Tenant.Organizations;
 using Prestamax.Infrastructure.Persistence;
 
 namespace Prestamax.Infrastructure.Tenant.Modules;
@@ -22,19 +21,5 @@ public sealed class ModuleRepository(
             .Where(x => x.IdOrganization == organizationId && x.IsActive)
             .OrderBy(x => x.DisplayOrder)
             .ToListAsync(cancellationToken);
-    }
-
-    public async Task<Module?> GetByIdAsync(
-        int organizationId,
-        int moduleId,
-        CancellationToken cancellationToken)
-    {
-        return await context
-            .Set<Module>()
-            .AsNoTracking()
-            .FirstOrDefaultAsync(
-                x => x.IdModule == moduleId
-                    && x.IdOrganization == organizationId,
-                cancellationToken);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Prestamax.Domain.Configuration.Settings;
+using Prestamax.Domain.Tenant.Organizations;
 
 namespace Prestamax.Infrastructure.Configuration.Settings;
 
@@ -14,7 +15,8 @@ public sealed class SettingConfiguration
     {
         builder.ToTable("CFG_SETTING");
 
-        builder.HasKey(x => x.IdSetting);
+        builder.HasKey(x => x.IdSetting)
+            .HasName("PK_CFG_SETTING");
 
         builder.Property(x => x.IdSetting)
             .HasColumnName("ID_SETTING")
@@ -39,6 +41,7 @@ public sealed class SettingConfiguration
 
         builder.Property(x => x.UpdatedAt)
             .HasColumnName("UPDATED_AT")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .IsRequired();
 
         builder.HasIndex(x => new
@@ -48,5 +51,11 @@ public sealed class SettingConfiguration
         })
             .IsUnique()
             .HasDatabaseName("UQ_CFG_SETTING_ORGANIZATION_KEY");
+
+        builder.HasOne<Organization>()
+            .WithMany()
+            .HasForeignKey(x => x.IdOrganization)
+            .HasConstraintName("FK_CFG_SETTING_ORGANIZATION")
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

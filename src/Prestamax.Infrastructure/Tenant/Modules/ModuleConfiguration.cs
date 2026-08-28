@@ -15,7 +15,8 @@ public sealed class ModuleConfiguration
     {
         builder.ToTable("TEN_MODULE");
 
-        builder.HasKey(x => x.IdModule);
+        builder.HasKey(x => x.IdModule)
+            .HasName("PK_TEN_MODULE");
 
         builder.Property(x => x.IdModule)
             .HasColumnName("ID_MODULE")
@@ -66,6 +67,9 @@ public sealed class ModuleConfiguration
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .IsRequired();
 
+        // --------------------------------------------------------
+        // UNIQUE: una organización no puede repetir el CODE
+        // --------------------------------------------------------
         builder.HasIndex(x => new
         {
             x.IdOrganization,
@@ -74,15 +78,50 @@ public sealed class ModuleConfiguration
         .IsUnique()
         .HasDatabaseName("UQ_TEN_MODULE_ORGANIZATION_CODE");
 
+        // --------------------------------------------------------
+        // UNIQUE: necesario para la FK compuesta del padre
+        // --------------------------------------------------------
+        builder.HasIndex(x => new
+        {
+            x.IdOrganization,
+            x.IdModule
+        })
+        .IsUnique()
+        .HasDatabaseName("UQ_TEN_MODULE_ORGANIZATION_ID");
+
+        // --------------------------------------------------------
+        // FK: módulo pertenece a una organización
+        // --------------------------------------------------------
         builder.HasOne<Organization>()
             .WithMany()
             .HasForeignKey(x => x.IdOrganization)
             .HasConstraintName("FK_TEN_MODULE_ORGANIZATION")
             .OnDelete(DeleteBehavior.Restrict);
 
+        // --------------------------------------------------------
+        // FK COMPUESTA:
+        //
+        // (ID_ORGANIZATION, ID_PARENT_MODULE)
+        //        ↓
+        // (ID_ORGANIZATION, ID_MODULE)
+        //
+        // Garantiza que el módulo padre pertenezca a la
+        // misma organización que el módulo hijo.
+        // --------------------------------------------------------
         builder.HasOne<Module>()
             .WithMany()
-            .HasForeignKey(x => x.IdParentModule)
+            .HasForeignKey(
+                x => new
+                {
+                    x.IdOrganization,
+                    x.IdParentModule
+                })
+            .HasPrincipalKey(
+                x => new
+                {
+                    x.IdOrganization,
+                    x.IdModule
+                })
             .HasConstraintName("FK_TEN_MODULE_PARENT")
             .OnDelete(DeleteBehavior.Restrict);
     }

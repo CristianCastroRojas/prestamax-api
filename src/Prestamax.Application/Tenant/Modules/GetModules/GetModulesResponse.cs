@@ -7,6 +7,7 @@ public sealed record GetModulesResponse(
     int IdModule,
     string Code,
     string Name,
+    string? Route,
     string? Icon,
     bool IsActive,
-    DateTimeOffset UpdatedAt);
+    IReadOnlyList<GetModulesResponse> Children);

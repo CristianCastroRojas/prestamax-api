@@ -14,7 +14,8 @@ public sealed class OrganizationConfiguration
     {
         builder.ToTable("TEN_ORGANIZATION");
 
-        builder.HasKey(x => x.IdOrganization);
+        builder.HasKey(x => x.IdOrganization)
+            .HasName("PK_TEN_ORGANIZATION");
 
         builder.Property(x => x.IdOrganization)
             .HasColumnName("ID_ORGANIZATION")
@@ -38,14 +39,6 @@ public sealed class OrganizationConfiguration
             .HasMaxLength(30)
             .IsRequired();
 
-        builder.HasIndex(x => new
-        {
-            x.IdDocumentType,
-            x.DocumentNumber
-        })
-            .IsUnique()
-            .HasDatabaseName("UQ_TEN_ORGANIZATION_DOCUMENT");
-
         builder.Property(x => x.Email)
             .HasColumnName("EMAIL")
             .HasMaxLength(255);
@@ -67,6 +60,14 @@ public sealed class OrganizationConfiguration
             .HasColumnName("UPDATED_AT")
             .HasDefaultValueSql("CURRENT_TIMESTAMP")
             .IsRequired();
+
+        builder.HasIndex(x => new
+        {
+            x.IdDocumentType,
+            x.DocumentNumber
+        })
+        .IsUnique()
+        .HasDatabaseName("UQ_TEN_ORGANIZATION_DOCUMENT");
 
         builder.HasOne<Domain.Catalogs.DocumentTypes.DocumentType>()
             .WithMany()

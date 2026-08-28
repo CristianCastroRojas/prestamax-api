@@ -14,7 +14,8 @@ public sealed class UserStatusConfiguration
     {
         builder.ToTable("CAT_USER_STATUS");
 
-        builder.HasKey(x => x.IdUserStatus);
+        builder.HasKey(x => x.IdUserStatus)
+            .HasName("PK_CAT_USER_STATUS");
 
         builder.Property(x => x.IdUserStatus)
             .HasColumnName("ID_USER_STATUS")

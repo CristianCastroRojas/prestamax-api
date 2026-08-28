@@ -18,7 +18,7 @@ public sealed class SystemVersionRepository(
             .Set<SystemVersion>()
             .AsNoTracking()
             .FirstOrDefaultAsync(
-                x => x.IsCurrent && x.Version !=null,
+                x => x.IsCurrent,
                 cancellationToken);
     }
 }

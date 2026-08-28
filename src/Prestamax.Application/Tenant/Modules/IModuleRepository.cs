@@ -13,12 +13,4 @@ public interface IModuleRepository
     Task<IReadOnlyList<Module>> GetAllAsync(
         int organizationId,
         CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Obtiene un módulo de una organización mediante su identificador.
-    /// </summary>
-    Task<Module?> GetByIdAsync(
-        int organizationId,
-        int moduleId,
-        CancellationToken cancellationToken);
 }

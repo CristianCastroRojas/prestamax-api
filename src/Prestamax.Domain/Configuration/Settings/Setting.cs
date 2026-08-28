@@ -5,9 +5,9 @@
 /// </summary>
 public sealed class Setting
 {
-    public long IdSetting { get; private set; }
+    public int IdSetting { get; private set; }
 
-    public long IdOrganization { get; private set; }
+    public int IdOrganization { get; private set; }
 
     public string SettingKey { get; private set; } = string.Empty;
 

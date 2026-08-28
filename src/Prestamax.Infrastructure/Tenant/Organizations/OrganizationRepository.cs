@@ -22,4 +22,15 @@ public sealed class OrganizationRepository(
                 x => x.IdOrganization == idOrganization,
                 cancellationToken);
     }
+
+    public async Task<bool> ExistsAsync(
+    int idOrganization,
+    CancellationToken cancellationToken)
+    {
+        return await context
+            .Set<Organization>()
+            .AnyAsync(
+                x => x.IdOrganization == idOrganization,
+                cancellationToken);
+    }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Prestamax.Application.Tenant.Modules.GetModuleById;
 using Prestamax.Application.Tenant.Modules.GetModules;
 
 namespace Prestamax.Application.Tenant.Modules;
@@ -13,7 +12,6 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddScoped<GetModulesHandler>();
-        services.AddScoped<GetModuleByIdHandler>();
 
         return services;
     }

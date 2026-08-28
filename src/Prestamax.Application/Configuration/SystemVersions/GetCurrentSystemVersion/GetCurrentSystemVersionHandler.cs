@@ -16,12 +16,13 @@ public sealed class GetCurrentSystemVersionHandler(
             cancellationToken);
 
         return systemVersion is null
-            ? throw new NotFoundException(SystemVersionErrors.NotFound)
+            ? throw new ConfigurationException(
+                SystemVersionErrors.CurrentVersionNotConfigured)
             : new GetCurrentSystemVersionResponse(
-            systemVersion.IdSystemVersion,
-            systemVersion.Version,
-            systemVersion.UpdatedAt,
-            systemVersion.IsCurrent,
-            systemVersion.ReleasedAt);
+                systemVersion.IdSystemVersion,
+                systemVersion.Version,
+                systemVersion.UpdatedAt,
+                systemVersion.IsCurrent,
+                systemVersion.ReleasedAt);
     }
 }

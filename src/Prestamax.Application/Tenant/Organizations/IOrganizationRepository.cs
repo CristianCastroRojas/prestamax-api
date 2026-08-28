@@ -13,4 +13,11 @@ public interface IOrganizationRepository
     Task<Organization?> GetByIdAsync(
         int idOrganization,
         CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Verifica si existe una organización por su identificador.
+    /// </summary>
+    Task<bool> ExistsAsync(
+        int idOrganization,
+        CancellationToken cancellationToken);
 }
