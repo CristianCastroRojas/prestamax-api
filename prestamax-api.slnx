@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/Prestamax.Api/Prestamax.Api.csproj" />
+  <Project Path="src/Prestamax.Application/Prestamax.Application.csproj" />
+  <Project Path="src/Prestamax.Domain/Prestamax.Domain.csproj" />
+  <Project Path="src/Prestamax.Infrastructure/Prestamax.Infrastructure.csproj" />
+</Solution>
